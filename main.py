@@ -7,7 +7,6 @@ from scipy.spatial.distance import pdist
 from scipy.spatial.distance import squareform
 
 from sklearn.manifold import TSNE
-from sklearn.datasets import load_digits
 from sklearn.metrics import pairwise_distances
 from sklearn.manifold._t_sne import _joint_probabilities
 
