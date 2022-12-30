@@ -1,9 +1,6 @@
 
 import numpy as np
 import pandas as pd
-import seaborn as sns
-sns.set(rc={'figure.figsize':(11.7,8.27)})
-palette = sns.color_palette("bright", 3)
 
 from scipy import linalg
 from scipy.spatial.distance import pdist
@@ -15,9 +12,9 @@ from sklearn.metrics import pairwise_distances
 from sklearn.manifold._t_sne import _joint_probabilities
 
 from matplotlib import pyplot as plt
+plt.style.use('ggplot')
 
-"""t-SNE implementation on slate quality data
-https://towardsdatascience.com/t-sne-python-example-1ded9953f26"""
+"""t-SNE implementation on slate quality data"""
 
 # Define the fit function
 def fit(X):
@@ -120,11 +117,6 @@ def _gradient_descent(obj_func, p0, args, it=0, n_iter=100, n_iter_check=1, n_it
 
 if __name__ == '__main__':
 
-    # My case is two dimensional. MNIST is 3-dimensional because it works with 28x28 images. Son 60k images (matrices)
-    # My case is like the iris dataset
-    # I would have to load the csv data in two variables X and y, both <numpy.ndarray>. Each row of the database as one
-    # item in the X 2D numpy.ndarray. Except "Calidad" which would be loaded in y as a 1D numpy.ndarray
-
     # Read the data and drop the expendable columns
     df = pd.read_csv('Data/PasCan.csv', delimiter=';')
     df = df.drop(columns= ['Sondeo', 'X', 'Y', 'Z', 'Profundidad', 'RQD'])
@@ -143,22 +135,81 @@ if __name__ == '__main__':
     # Define machine epsilon, number of components, and perplexity
     MACHINE_EPSILON = np.finfo(np.double).eps
     n_components = 3
-    perplexity = 30
+    perplexity = 45
 
+    #------------------------***------------------------
     # # Call the fit function
     # X_embedded = fit(X)
+    
+    # # Save the result for further processing
+    # np.save('X_embedded.npy', X_embedded, allow_pickle=False, fix_imports=False)
+    # np.save('y.npy', y, allow_pickle=False, fix_imports=False)
 
     # # Plot the results
-    # sns.scatterplot(X_embedded[:,0], X_embedded[:,1], hue=y, legend='full', palette=palette)
-    # plt.show()
+    # # Plot all 3 components (3D)
+    # fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(11.7,8.27))
+    
+    # scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], X_embedded[:,2], c=y, cmap='brg', marker='o', edgecolors='w')
+    
+    # ax.set(xlim=(-30, 30), ylim=(-20, 20), zlim=(0, 30), 
+    #     title='t-distributed Stochastic Neighbor Embedding (t-SNE)',
+    #     xlabel='Component 1', ylabel='Component 2', zlabel='Component 3')
+    
+    # legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
 
+    # ax.add_artist(legend)
+    
+    # plt.show()
+    
+    # # Plot a 2D projection
+    # fig, ax = plt.subplots(figsize=(11.7,8.27))
+
+    # scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], c=y, cmap='brg', marker='o', edgecolors='w') # Plotting a 2D projection
+
+    # ax.set(xlim=(-30, 30), ylim=(-20, 20), 
+    #         title='t-distributed Stochastic Neighbor Embedding (t-SNE)',
+    #         xlabel='Component 1', ylabel='Component 2')
+
+    # legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
+
+    # ax.add_artist(legend)
+    
+    # plt.show()
+    #------------------------***------------------------
+    
     # Same method but implemented with scikit-learn
     tsne = TSNE(n_components=n_components, perplexity=perplexity, verbose=1, random_state=123)
     X_embedded = tsne.fit_transform(X)
+    
+    # Save the result for further processing
+    np.save('X_embedded.npy', X_embedded, allow_pickle=False, fix_imports=False)
+    np.save('y.npy', y, allow_pickle=False, fix_imports=False)
+    
+    # Plot all 3 components (3D)
+    # fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(11.7,8.27))
+    # scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], X_embedded[:,2], c=y, cmap='brg', marker='o', edgecolors='w')
+    
+    # ax.set(xlim=(-30, 30), ylim=(-20, 20), zlim=(0, 30), 
+    #     title='t-distributed Stochastic Neighbor Embedding (t-SNE)',
+    #     xlabel='Component 1', ylabel='Component 2', zlabel='Component 3')
+    
+    # legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
 
-    # fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-    # ax.scatter(X_embedded[:,0], X_embedded[:,1], X_embedded[:,2], c=y)
+    # ax.add_artist(legend)
     
-    sns.scatterplot(X_embedded[:,0], X_embedded[:,1], hue=y, legend='full', palette=palette)
+    # plt.show()
     
+    # Plot a 2D projection
+    fig, ax = plt.subplots(figsize=(11.7,8.27))
+
+    scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], c=y, cmap='brg', marker='o', edgecolors='w') # Plotting a 2D projection
+
+    ax.set(xlim=(-30, 30), ylim=(-20, 20), 
+            title='t-distributed Stochastic Neighbor Embedding (t-SNE)',
+            xlabel='Component 1', ylabel='Component 2')
+
+    legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
+
+    ax.add_artist(legend)
+        
     plt.show()
