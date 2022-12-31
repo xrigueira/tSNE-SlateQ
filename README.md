@@ -4,15 +4,19 @@ t-distributed Stochastic Neighbour Embedding is a nonlinear statistical method f
 
 The algorithm starts by transforming the high-dimensional Euclidean distances between data points into joint probabilities which contain information on similarities. In the case of data point $x_j$ for example, and data point $x_i$, the joint probability $p_{ij}$ defines the chances that $x_i$ would select $x_j$ as its neighbour if neighbours were chosen in relation to their probability density under a Gaussian distribution centered at $x_i$. This joint probability assumes elevated values for points that are located nearby, while it tends to zero in the opposite case. $p_{ij}$ is defined mathematically in Equation 1:
 
-$$p_{ij}=(p_{j|i}+p_{i|j})/2n, where p_{j|i}=(exp(-(||x_i-x_j||^2)/(2\simga^2_1)))/(\sum_{k \neq i}((-||x_i-x_k||^2)/(2\sigma^2_i)))$$
+$$p_{ij}=(p_{j|i}+p_{i|j})/2n$$,
+
+where
+
+$$p_{j|i}=(exp(-(||x_i-x_j||^2)/(2\sigma^2_1)))/(\sum_{k \neq i}((-||x_i-x_k||^2)/(2\sigma^2_i)))$$
 
 For the low-dimensional counterparts of the points presented above, t-SNE employs a Student's t-distribution with one degree of freedom. Based on this condition, the joint probability for this case is defined as: 
 
-$$q_{ij}=(1+||y_i-y_j||^2)^(-1)/(\sum_{k \neq l}(1+||y_k-y_l||^2)^(-1))$$
+$$q_{ij}=(1+||y_i-y_j||^2)^{-1}/(\sum_{k \neq l}(1+||y_k-y_l||^2)^{-1})$$
 
 Finally, the algorithm aims to find a low-dimensional data representation that minimizes the discrepancy between both joint probabilities. This is performed through minimization by gradient descent of the Kullback-Liebler divergence between $p_{ij}$ and $q_{ij}$, as defined in Equation 3.
 
-$$(\delta C)/(\delta y_i)=4\sum_j(p_{ij}-q_{ij}(y_i-y_j)(1+||y_i-y_j||^2)^(-1))$$
+$$(\delta C)/(\delta y_i)=4\sum_j(p_{ij}-q_{ij})(y_i-y_j)(1+||y_i-y_j||^2)^{-1}$$
 
 ## Results
 
