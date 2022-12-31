@@ -30,4 +30,4 @@ Nevertheless, the are several clusters that contain data points of more than one
 ## Bibliography
 
 [1] L. Van Der Maaten and G. Hinton, “Visualizing data using t-SNE,” J. Mach. Learn. Res., vol. 9, pp. 2579–2625, 2008.
-[2] G. E. Hinton and S. Roweis, “Stochastic Neighbor Embedding,” in Advances in Neural Information Processing Systems, 2002, vol. 15. Available: [](https://proceedings.neurips.cc/paper/2002/file/6150ccc6069bea6b5716254057a194ef-Paper.pdf.)
+[2] G. E. Hinton and S. Roweis, “Stochastic Neighbor Embedding,” in Advances in Neural Information Processing Systems, 2002, vol. 15. [Available here](https://proceedings.neurips.cc/paper/2002/file/6150ccc6069bea6b5716254057a194ef-Paper.pdf.)
