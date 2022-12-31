@@ -4,7 +4,7 @@ t-distributed Stochastic Neighbour Embedding is a nonlinear statistical method f
 
 The algorithm starts by transforming the high-dimensional Euclidean distances between data points into joint probabilities which contain information on similarities. In the case of data point $x_j$ for example, and data point $x_i$, the joint probability $p_{ij}$ defines the chances that $x_i$ would select $x_j$ as its neighbour if neighbours were chosen in relation to their probability density under a Gaussian distribution centered at $x_i$. This joint probability assumes elevated values for points that are located nearby, while it tends to zero in the opposite case. $p_{ij}$ is defined mathematically in Equation 1:
 
-$$p_{ij}=(p_{j|i}+p_{i|j})/2n$$,
+$$p_{ij}=(p_{j|i}+p_{i|j})/2n$$
 
 where
 
