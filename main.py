@@ -177,7 +177,7 @@ if __name__ == '__main__':
     #------------------------***------------------------
     
     # Same method but implemented with scikit-learn
-    tsne = TSNE(n_components=n_components, perplexity=perplexity, verbose=1, random_state=123)
+    tsne = TSNE(n_components=n_components, perplexity=perplexity, n_iter=1000, verbose=1, random_state=123)
     X_embedded = tsne.fit_transform(X)
     
     # Save the result for further processing
