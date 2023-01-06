@@ -185,18 +185,18 @@ if __name__ == '__main__':
     np.save('y.npy', y, allow_pickle=False, fix_imports=False)
     
     # Plot all 3 components (3D)
-    # fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(11.7,8.27))
-    # scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], X_embedded[:,2], c=y, cmap='brg', marker='o', edgecolors='w')
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(11.7,8.27))
+    scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], X_embedded[:,2], c=y, cmap='brg', marker='o', edgecolors='w')
     
-    # ax.set(xlim=(-30, 30), ylim=(-20, 20), zlim=(0, 30), 
-    #     title='t-distributed Stochastic Neighbor Embedding (t-SNE)',
-    #     xlabel='Component 1', ylabel='Component 2', zlabel='Component 3')
+    ax.set(xlim=(-30, 30), ylim=(-20, 20), zlim=(-25, 25), 
+        title='t-distributed Stochastic Neighbor Embedding (t-SNE) 3D',
+        xlabel='Component 1', ylabel='Component 2', zlabel='Component 3')
     
-    # legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
+    legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
 
-    # ax.add_artist(legend)
+    ax.add_artist(legend)
     
-    # plt.show()
+    plt.show()
     
     # Plot a 2D projection
     fig, ax = plt.subplots(figsize=(11.7,8.27))
@@ -204,7 +204,7 @@ if __name__ == '__main__':
     scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], c=y, cmap='brg', marker='o', edgecolors='w') # Plotting a 2D projection
 
     ax.set(xlim=(-30, 30), ylim=(-20, 20), 
-            title='t-distributed Stochastic Neighbor Embedding (t-SNE)',
+            title='t-distributed Stochastic Neighbor Embedding (t-SNE) 2D',
             xlabel='Component 1', ylabel='Component 2')
 
     legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index')
