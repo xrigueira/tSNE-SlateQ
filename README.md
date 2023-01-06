@@ -32,7 +32,7 @@ However, the three-dimensional graph contains more information and offers a bett
 ![alt text](Figures/figure2.png)
 **Figure 2**. Three-dimensional results of the t-SNE. Each point in the plot represents a slate section. The colours used to plot each value of the quality index are conserved. The data points of the highest quality (3) are coloured in green. The two other quality classifications, medium (2) and low (1), are represented in red and blue, respectively.
 
-Lastly, the t-SNE is able to find some correlations between the data and the target variable, quality in this case, but does not provide any information regarding those variables that hold a higher weight in the prediction of the quality index. With this goal in mind, a Bayesian analysis is proposed.
+Lastly, the t-SNE is able to find some correlations between the data and the target variable, quality in this case, but does not provide any information regarding those variables that hold a higher weight in the prediction of the quality index.
 
 ## Bibliography
 
