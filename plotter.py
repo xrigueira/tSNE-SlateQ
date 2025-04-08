@@ -34,11 +34,14 @@ scatter = ax.scatter(X_embedded[:,0], X_embedded[:,1], c=y, cmap='brg', marker='
 
 ax.set(xlim=(-30, 30), ylim=(-20, 20))
 
-ax.set_title('(a)', fontname='Arial', fontsize=16)
-ax.set_xlabel('Component 1', fontname='Arial', fontsize=14)
-ax.set_ylabel('Component 2', fontname='Arial', fontsize=14)
+ax.set_title('(a)', fontname='Arial', fontsize=26)
+ax.set_xlabel('Component 1', fontname='Arial', fontsize=22)
+ax.set_ylabel('Component 2', fontname='Arial', fontsize=22)
 
-legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index', fontsize=14, title_fontsize='13', prop={'family':'Arial'})
+ax.tick_params(axis='x', labelsize=18)
+ax.tick_params(axis='y', labelsize=18)
+
+legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index', fontsize=22, title_fontsize='23', prop={'family':'Arial', 'size': 18})
 plt.setp(legend.get_title(), fontname='Arial')
 
 ax.add_artist(legend)
@@ -54,11 +57,14 @@ scatter = ax.scatter(X_embedded[:,0], X_embedded[:,2], c=y, cmap='brg', marker='
 
 ax.set(xlim=(-30, 30), ylim=(-25, 25))
 
-ax.set_title('(b)', fontname='Arial', fontsize=16)
-ax.set_xlabel('Component 1', fontname='Arial', fontsize=14)
-ax.set_ylabel('Component 3', fontname='Arial', fontsize=14)
+ax.set_title('(b)', fontname='Arial', fontsize=26)
+ax.set_xlabel('Component 1', fontname='Arial', fontsize=22)
+ax.set_ylabel('Component 3', fontname='Arial', fontsize=22)
 
-legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index', fontsize=14, title_fontsize='13', prop={'family':'Arial'})
+ax.tick_params(axis='x', labelsize=18)
+ax.tick_params(axis='y', labelsize=18)
+
+legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index', fontsize=22, title_fontsize='23', prop={'family':'Arial', 'size': 18})
 plt.setp(legend.get_title(), fontname='Arial')
 
 ax.add_artist(legend)
@@ -74,11 +80,14 @@ scatter = ax.scatter(X_embedded[:,1], X_embedded[:,2], c=y, cmap='brg', marker='
 
 ax.set(xlim=(-20, 20), ylim=(-25, 25))
 
-ax.set_title('(c)', fontname='Arial', fontsize=16)
-ax.set_xlabel('Component 2', fontname='Arial', fontsize=14)
-ax.set_ylabel('Component 3', fontname='Arial', fontsize=14)
+ax.set_title('(c)', fontname='Arial', fontsize=26)
+ax.set_xlabel('Component 2', fontname='Arial', fontsize=22)
+ax.set_ylabel('Component 3', fontname='Arial', fontsize=22)
 
-legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index', fontsize=14, title_fontsize='13', prop={'family':'Arial'})
+ax.tick_params(axis='x', labelsize=18)
+ax.tick_params(axis='y', labelsize=18)
+
+legend = ax.legend(*scatter.legend_elements(), loc='best', title='Quality index', fontsize=22, title_fontsize='23', prop={'family':'Arial', 'size': 18})
 plt.setp(legend.get_title(), fontname='Arial')
 
 ax.add_artist(legend)
