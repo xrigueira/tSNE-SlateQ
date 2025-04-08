@@ -117,12 +117,12 @@ def _gradient_descent(obj_func, p0, args, it=0, n_iter=100, n_iter_check=1, n_it
 if __name__ == '__main__':
 
     # Read the data and drop the expendable columns
-    df = pd.read_csv('Data/PasCan.csv', delimiter=';')
-    df = df.drop(columns= ['Sondeo', 'X', 'Y', 'Z', 'Profundidad', 'RQD'])
+    df = pd.read_csv('Data/PasCan_review.csv', delimiter=';')
+    df = df.drop(columns= ['Sondeo', 'X', 'Y', 'Z']) # Profundidad and RQD were also dropped in the first submision of the paper
 
     # Create a 1D array with the target values and drop the column with this information
-    y = df['Calidad'].to_numpy(dtype=float)
-    df = df.drop(columns=['Calidad'])
+    y = df['Quality'].to_numpy(dtype=float)
+    df = df.drop(columns=['Quality'])
     
     # Create a 2D numpy array with the same shape as the df
     X = np.empty((len(df), df.shape[1]), dtype=float)
